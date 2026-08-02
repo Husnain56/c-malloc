@@ -1,0 +1,22 @@
+# Compiled binaries (no extension on Linux)
+main
+test
+*.out
+a.out
+
+# Object files
+*.o
+*.obj
+
+# Debug symbols
+*.dSYM/
+*.pdb
+
+# Editor/swap files
+*.swp
+*.swo
+*~
+
+# Build directories (if you add a Makefile later)
+build/
+bin/
