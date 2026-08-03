@@ -7,12 +7,11 @@ char HEAP[CAPACITY];
 size_t current_size = 0;
 
 void* heap_alloc(size_t size){
-    
-    if(current_size >= CAPACITY){
        
+    if(current_size + size > CAPACITY){
         return NULL;    
-    }       
-    
+    }  
+
     char* ptr = &HEAP[current_size];
     current_size += size;
     return ptr;
