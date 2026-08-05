@@ -2,10 +2,17 @@
 
 #define CAPACITY 640000
 
-char HEAP[CAPACITY];
+char HEAP[CAPACITY] = {0};
 
 size_t current_size = 0;
 
+typedef struct{
+
+    char* next;
+    size_t size;
+    int position;
+} heap_chunk;
+    
 void* heap_alloc(size_t size){
        
     if(current_size + size > CAPACITY){
@@ -15,6 +22,12 @@ void* heap_alloc(size_t size){
     char* ptr = &HEAP[current_size];
     current_size += size;
     return ptr;
+}
+
+void heap_free(void* ptr){
+
+           
+    
 }
 
 int main(){
