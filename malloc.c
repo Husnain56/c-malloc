@@ -4,29 +4,36 @@
 
 char HEAP[CAPACITY] = {0};
 
-size_t current_size = 0;
-
 typedef struct{
 
     char* next;
-    size_t size;
-    int position;
+    char* head;
+    bool isFree;
+
 } heap_chunk;
-    
+
+heap_chunk CHUNK_TABLE[CAPACITY];
+
+size_t current_size = 0;
+
+   
 void* heap_alloc(size_t size){
        
     if(current_size + size > CAPACITY){
         return NULL;    
     }  
+    
 
     char* ptr = &HEAP[current_size];
+    
+
     current_size += size;
     return ptr;
 }
 
 void heap_free(void* ptr){
 
-           
+               
     
 }
 
