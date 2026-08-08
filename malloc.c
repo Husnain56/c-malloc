@@ -4,9 +4,9 @@
 
 char HEAP[CAPACITY] = {0};
 
-typedef struct{
+typedef struct heap_chunk{
 
-    heap_chunk* next;
+    struct heap_chunk* next;
     char** head;
     bool isFree;
 
@@ -36,7 +36,7 @@ void* heap_alloc(size_t size){
 
         heap_chunk chunk;
         
-        prev.next = chunk; 
+        prev.next = &chunk; 
 
         chunk.isFree = false;
         chunk.next = NULL;
@@ -55,7 +55,7 @@ void heap_free(void* ptr){
         return;
     }
     
-    
+   
     
 }
 
