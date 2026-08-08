@@ -55,7 +55,30 @@ void heap_free(void* ptr){
         return;
     }
     
-   
+    heap_chunk *chunk;
+
+    for(int i = 0 ; i < current_size; ++i){   
+
+        if(*(CHUNK_TABLE[i].head) == &ptr){
+
+            chunk = &CHUNK_TABLE[i];
+            break;
+        }
+
+    }
+    
+    chunk->isFree = true;
+    chunk->head = NULL;
+    
+    while (chunk->next != NULL){
+
+        chunk->next->isFree = true;
+
+        chunk = chunk->next;
+
+    } 
+     
+     
     
 }
 
