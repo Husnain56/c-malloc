@@ -6,8 +6,8 @@ char HEAP[CAPACITY] = {0};
 
 typedef struct{
 
-    char* next;
-    char* head;
+    heap_chunk* next;
+    char** head;
     bool isFree;
 
 } heap_chunk;
@@ -26,14 +26,36 @@ void* heap_alloc(size_t size){
 
     char* ptr = &HEAP[current_size];
     
+    heap_chunk prev;
+    prev.head = &ptr;
+    prev.isFree = false;
+    prev.next = NULL;
+    CHUNK_TABLE[current_size] = prev;
 
+    for(int i = current_size; i < current_size + size; i++){
+
+        heap_chunk chunk;
+        
+        prev.next = chunk; 
+
+        chunk.isFree = false;
+        chunk.next = NULL;
+
+        CHUNK_TABLE[i] = chunk;
+        prev = chunk;
+    }
+    
     current_size += size;
     return ptr;
 }
 
 void heap_free(void* ptr){
-
-               
+    
+    if(ptr==NULL){
+        return;
+    }
+    
+    
     
 }
 
